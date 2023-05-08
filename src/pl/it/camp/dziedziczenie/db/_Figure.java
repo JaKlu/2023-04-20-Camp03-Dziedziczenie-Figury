@@ -1,15 +1,41 @@
 package pl.it.camp.dziedziczenie.db;
 
+import java.util.InputMismatchException;
+
 public interface _Figure {
 
-    public static _0kat whichFigureAmI(int a) {
+    static _Figure whichFigureAmI(String[] input) throws InputMismatchException, NumberFormatException {
+        int[] inputInt = new int[input.length];
+
+        for (int j = 0; j < inputInt.length; j++) {
+            inputInt[j] = Integer.parseInt(input[j]);
+        }
+
+        switch (inputInt.length) {
+            case 1:
+                return _Figure.whichFigureAmI(inputInt[0]);
+            case 3:
+                return _Figure.whichFigureAmI(inputInt[0], inputInt[1], inputInt[2]);
+            case 4:
+                return _Figure.whichFigureAmI(inputInt[0], inputInt[1], inputInt[2], inputInt[3]);
+            case 5:
+                return _Figure.whichFigureAmI(inputInt[0], inputInt[1], inputInt[2], inputInt[3], inputInt[4]);
+            case 6:
+                return _Figure.whichFigureAmI(inputInt[0], inputInt[1], inputInt[2], inputInt[3], inputInt[4], inputInt[5]);
+            default:
+                break;
+        }
+        return null;
+    }
+
+    static _0kat whichFigureAmI(int a) {
         if (!(_0kat.isDisk(a))) {
             return null;
         }
         return new _0kat(a);
     }
 
-    public static _3kat whichFigureAmI(int a, int b, int c) {
+    static _3kat whichFigureAmI(int a, int b, int c) {
         if (!(_3kat.isTriangle(a, b, c))) {
             return null;
         }
@@ -22,7 +48,7 @@ public interface _Figure {
         return new TrojkatRoznoboczny(a, b, c);
     }
 
-    public static _4kat whichFigureAmI(int a, int b, int c, int d) {
+    static _4kat whichFigureAmI(int a, int b, int c, int d) {
         if (!(_4kat.isQuadrangle(a, b, c, d))) {
             return null;
         }
@@ -46,7 +72,7 @@ public interface _Figure {
         return new Czworokat(a, b, c, d);
     }
 
-    public static _5kat whichFigureAmI(int a, int b, int c, int d, int e) {
+    static _5kat whichFigureAmI(int a, int b, int c, int d, int e) {
         if (!(_5kat.isPentagon(a, b, c, d, e))) {
             return null;
         }
@@ -56,7 +82,7 @@ public interface _Figure {
         return new Pieciokat(a, b, c, d, e);
     }
 
-    public static _6kat whichFigureAmI(int a, int b, int c, int d, int e, int f) {
+    static _6kat whichFigureAmI(int a, int b, int c, int d, int e, int f) {
         if (!(_6kat.isHexagon(a, b, c, d, e, f))) {
             return null;
         }
@@ -65,5 +91,4 @@ public interface _Figure {
         }
         return new Szesciokat(a, b, c, d, e, f);
     }
-
 }

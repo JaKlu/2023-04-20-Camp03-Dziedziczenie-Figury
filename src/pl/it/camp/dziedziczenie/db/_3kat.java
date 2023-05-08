@@ -36,7 +36,6 @@ public abstract class _3kat implements _Figure {
 
     @Override
     public String toString() {
-
         return new StringBuilder()
                 .append(this.getA()).append(", ")
                 .append(this.getB()).append(", ")
@@ -65,5 +64,4 @@ public abstract class _3kat implements _Figure {
     public int getC() {
         return c;
     }
-
 }
